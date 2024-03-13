@@ -64,3 +64,4 @@ C:\Users\erick\Desktop\LivrosAPI\obj\Debug\net8.0\refint\teste.dll
 C:\Users\erick\Desktop\LivrosAPI\obj\Debug\net8.0\teste.pdb
 C:\Users\erick\Desktop\LivrosAPI\obj\Debug\net8.0\teste.genruntimeconfig.cache
 C:\Users\erick\Desktop\LivrosAPI\obj\Debug\net8.0\ref\teste.dll
+C:\Users\erick\Desktop\LivrosAPI\obj\Debug\net8.0\teste.sourcelink.json

@@ -47,6 +47,19 @@ app.MapGet("/livros/{id}", (int id, HttpRequest request) =>
 
 app.MapPost("/livros", (Livros.API.Model.Livro livro) => {
     var livroService = app.Services.GetRequiredService<List<Livros.API.Model.Livro>>();
+
+    if(livro == null){
+        return Results.NotFound();
+    }
+
+    if(livro.Paginas < 0){
+        return Results.Problem("O número de páginas deve ser maior que zero.", statusCode: 400);
+    }
+
+    if(livro.Ano <= 0){
+        return Results.Problem("O ano deve ser maior que zero.", statusCode: 400);
+    }
+
     livro.Id = livroService.Max(t => t.Id) + 1;
     livroService.Add(livro);
     return Results.Created($"/livros/{livro.Id}", livro);
@@ -59,6 +72,14 @@ app.MapPut("/livros/{id}", (int id, Livros.API.Model.Livro livro) => {
 
     if(existingLivro == null){
         return Results.NotFound();
+    }
+
+    if(existingLivro.Paginas < 0){
+        return Results.Problem("O número de páginas deve ser maior que zero.", statusCode: 400);
+    }
+
+    if(existingLivro.Ano < 0){
+        return Results.Problem("O ano deve ser maior que zero.", statusCode: 400);
     }
 
     existingLivro.Titulo = livro.Titulo;
